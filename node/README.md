@@ -31,12 +31,14 @@ Some optional enviornment variables that can be set in `.env` are as follows:
 - [Media lookup parsing](###-media-lookup-parsing): This requires keys/accounts with different APIs which will allow the application to parse data about the torrent before posting. The embeded posts will look much cleaner and include links to find more information about the media as well as poster images.
 
 ### Default Posting
-IMAGE_OF_DEFAULT_POSTING_METHOD
+![xfL4yBATyn](https://github.com/clausjs/webhook-torrent-reporter/assets/12068849/75ea5ca1-4490-460d-998f-8df15eee23b6)
 
 No additional setup required
 
 ### Media lookup parsing
-IMAGE_OF_MOVIE_POSTING, IMAGE_OF_TV_POSTING
+Movie: ![MyRC0OTPHv](https://github.com/clausjs/webhook-torrent-reporter/assets/12068849/9b885321-538c-4c92-ad7f-95f06954d7c7)
+Tv: ![QT4Xoa8PGm](https://github.com/clausjs/webhook-torrent-reporter/assets/12068849/d99be63c-6c62-447a-afa5-d6b3c8eeef2b)
+
 
 Services used for data lookup:
 - Movies: [OMDb API](http://www.omdbapi.com/). You can create a key [here](http://www.omdbapi.com/apikey.aspx).
@@ -88,8 +90,9 @@ Inside the text box put: `<path_to_exe> %G %N %Z %C`.
 ### Acquiring a Discord webhook url
 In a server you own or have admin rights to open up the settings for the channel you want the information posted to and click on `Integrations` and under `Webhooks` click `Create Webhook`. 
 
-IMAGE_OF_NEW_WEBHOOK_CREATION
+![zNPHxTlLbc](https://github.com/clausjs/webhook-torrent-reporter/assets/12068849/43a9ff8b-e31f-4617-bf89-e2a23efb97f1)
 
-IMAGE_OF_WEBHOOK_CONFIGURATION
+![aQmGH8QKQm](https://github.com/clausjs/webhook-torrent-reporter/assets/12068849/7503d761-9000-4a04-9c5b-218585d526af)
+
 
 In the resulting webhook creation box set the icon/name/and channel to whatever setting you desire and click `Copy Webhook URL` which will paste your url to the clipboard and can now be copied to your `config.ini` file. 
