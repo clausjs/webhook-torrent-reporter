@@ -37,7 +37,8 @@ No additional setup required
 
 ### Media lookup parsing
 Movie: ![MyRC0OTPHv](https://github.com/clausjs/webhook-torrent-reporter/assets/12068849/9b885321-538c-4c92-ad7f-95f06954d7c7)
-Tv: ![QT4Xoa8PGm](https://github.com/clausjs/webhook-torrent-reporter/assets/12068849/d99be63c-6c62-447a-afa5-d6b3c8eeef2b)
+Tv: ![YiiiIJh2fY](https://github.com/clausjs/webhook-torrent-reporter/assets/12068849/060b7ec5-7a03-4f3b-b0dc-3b961d94d4d1)
+
 
 
 Services used for data lookup:
