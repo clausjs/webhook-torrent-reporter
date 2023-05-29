@@ -93,7 +93,8 @@ In a server you own or have admin rights to open up the settings for the channel
 
 ![zNPHxTlLbc](https://github.com/clausjs/webhook-torrent-reporter/assets/12068849/43a9ff8b-e31f-4617-bf89-e2a23efb97f1)
 
-![aQmGH8QKQm](https://github.com/clausjs/webhook-torrent-reporter/assets/12068849/7503d761-9000-4a04-9c5b-218585d526af)
+![aQmGH8QKQm](https://github.com/clausjs/webhook-torrent-reporter/assets/12068849/6b60c975-6913-45c4-8e95-6046b62391b8)
+
 
 
 In the resulting webhook creation box set the icon/name/and channel to whatever setting you desire and click `Copy Webhook URL` which will paste your url to the clipboard and can now be copied to your `config.ini` file. 
