@@ -1,0 +1,35 @@
+{
+  "name": "webhook-torrent-reporter",
+  "version": "1.0.0",
+  "description": "An app that can be triggered with command line arguments to post to a webhook and report that files have been downloaded",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npx tsc && node dist/index.js",
+    "test": "npx tsc && jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clausjs/webhook-torrent-reporter.git"
+  },
+  "author": "Joseph Claus",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/clausjs/webhook-torrent-reporter/issues"
+  },
+  "homepage": "https://github.com/clausjs/webhook-torrent-reporter#readme",
+  "dependencies": {
+    "discord.js": "^14.11.0",
+    "dotenv": "^16.0.3",
+    "moment": "^2.29.4",
+    "node-fetch": "^2.6.7",
+    "parse-torrent-name": "^0.5.4",
+    "winston": "^3.9.0",
+    "winston-daily-rotate-file": "^4.7.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.2.3",
+    "jest": "^29.5.0",
+    "typescript": "^5.0.4"
+  }
+}

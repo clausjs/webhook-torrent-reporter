@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+      "target": "ES2022",                          
+      "module": "commonjs",                    
+      "lib": ["es6"],                     
+      "allowJs": true,
+      "outDir": "./dist",                          
+      "strict": true,         
+      "noImplicitAny": false,
+      "esModuleInterop": true,
+      "resolveJsonModule": true
+    },
+    "include": ["*.ts", "**/*.json"],
+    "exclude": [
+      "node_modules",
+      "./dist/**/*",
+      "**/*.spec.ts",
+      "package-lock.json",
+      "package.json",
+      "tsconfig.json"
+    ]
+  }

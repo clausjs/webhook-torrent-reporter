@@ -1,0 +1,28 @@
+{
+    "id": 7436,
+    "url": "https://www.tvmaze.com/episodes/7436/bobs-burgers-2x09-beefsquatch",
+    "name": "Beefsquatch",
+    "season": 2,
+    "number": 9,
+    "type": "regular",
+    "airdate": "2012-05-20",
+    "airtime": "20:30",
+    "airstamp": "2012-05-21T00:30:00+00:00",
+    "runtime": 30,
+    "rating": {
+        "average": 7.6
+    },
+    "image": {
+        "medium": "https://static.tvmaze.com/uploads/images/medium_landscape/194/485976.jpg",
+        "original": "https://static.tvmaze.com/uploads/images/original_untouched/194/485976.jpg"
+    },
+    "summary": "<p>Bob appears in a cooking segment on a local news morning program, but Gene steals the show when he crashes the set with a sasquatch mask.</p>",
+    "_links": {
+        "self": {
+            "href": "https://api.tvmaze.com/episodes/7436"
+        },
+        "show": {
+            "href": "https://api.tvmaze.com/shows/107"
+        }
+    }
+}
