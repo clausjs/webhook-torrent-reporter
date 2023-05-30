@@ -1,10 +1,11 @@
 {
   "name": "webhook-torrent-reporter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An app that can be triggered with command line arguments to post to a webhook and report that files have been downloaded",
   "main": "./dist/index.js",
   "scripts": {
     "build": "tsc",
+    "installer": "npm run build && pkg dist/index.js -c package.json --out-path build",
     "start": "npx tsc && node dist/index.js",
     "test": "npx tsc && jest"
   },

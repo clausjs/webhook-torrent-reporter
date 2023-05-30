@@ -32,6 +32,7 @@ class OMDBApi {
         
         try {
             const cleanTitle: string = parseFileName(fileName).title;
+            logger.info(`Stripped movie title for torrent name: ${cleanTitle}`);
             const response: TitleSearchResponse = await get(`http://www.omdbapi.com/?apikey=${this.key}&t=${encodeURIComponent(cleanTitle)}`);
             return response;
         } catch (movieSearchError) {
