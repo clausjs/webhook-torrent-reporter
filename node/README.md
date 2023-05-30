@@ -6,7 +6,7 @@ Torrenting is illegal, even in cases where you are legally allowed to acquire a 
 This application should only be used when using torrents to get files from one machine to another **owned by the same user**. If you already have a copy of something you've legally paid for and want to transfer a copy to other machines using the torrent protocol this application can be used to report those files have finished transferring.
 
 # Pre-configuration
-A `config.ini` file should be created inside the root folder for the project (or the working directory the app will run from). This file will include environment variables the application will use to determine torrent types/output messaging/and optional lookups.
+A `config.ini` will need to be created inside the root folder for the project (or the working directory the app will run from). This file will include environment variables the application will use to determine torrent types/output messaging/and optional lookups.
 
 Required keys:
 ```
