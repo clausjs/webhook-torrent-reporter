@@ -30,12 +30,12 @@ Some optional enviornment variables that can be set in `config.ini` are as follo
 
 - [Media lookup parsing](###-media-lookup-parsing): This requires keys/accounts with different APIs which will allow the application to parse data about the torrent before posting. The embeded posts will look much cleaner and include links to find more information about the media as well as poster images.
 
-### Default Posting
+## Default Posting
 ![xfL4yBATyn](https://github.com/clausjs/webhook-torrent-reporter/assets/12068849/75ea5ca1-4490-460d-998f-8df15eee23b6)
 
 No additional setup required
 
-### Media lookup parsing
+## Media lookup parsing
 Movie: ![MyRC0OTPHv](https://github.com/clausjs/webhook-torrent-reporter/assets/12068849/9b885321-538c-4c92-ad7f-95f06954d7c7)
 Tv: ![YiiiIJh2fY](https://github.com/clausjs/webhook-torrent-reporter/assets/12068849/060b7ec5-7a03-4f3b-b0dc-3b961d94d4d1)
 
@@ -83,10 +83,17 @@ Generic payload will be in the form of
 ```
 
 ### Configure launching of app
-Using qBittorrent as an example, we can configure the application to launch a program when a torrent completes downloading and pass along the required information via command line arguments. Download and extract the application to a folder where the running user will have access. Go into qBittorrent settings > Downloads > and enable `Run external program on torrent completion`. 
+Unfortunately, qBittorrent launches applications from the working directory where it is installed. If it is installed in Program Files on Windows (the default) it will not have access to write in this directory. This will cause the logs to never write and prevents the application from completing. In the directory where you placed the exe create a batch script with the following:
 
-Inside the text box put: `<path_to_exe> %G %N %Z %C`.
-**NOTE: The arguments _are_ case sensitive and the order is very important. The directory where <path_to_exe> is should also contain your `config.ini`**
+```
+@ECHO OFF
+cd <path_to_directory_where_exe_and_batch_file_are> //Example: cd C:\webhook-torrent-reporter\
+START webhook-torrent-reporter-win.exe %1 %2 %3 %4 // The %1-4 are very important and will pass the command line args from qbittorrent along to the webhook reporter
+```
+
+Using qBittorrent as an example, we can configure the application to launch a program when a torrent completes downloading and pass along the required information via command line arguments. Download and extract the application to a folder where the running user will have access. Go into qBittorrent settings > Downloads > and enable `Run external program on torrent completion`. Inside the text box, point to the batch file and pass along the command line args: `<path_to_.bat_file> %G %N %Z %C`.
+
+**NOTE: The arguments _are_ case sensitive and the order is very important. The directory where <path_to_.bat_file> is should also contain your `config.ini`.**
 
 ### Acquiring a Discord webhook url
 In a server you own or have admin rights to open up the settings for the channel you want the information posted to and click on `Integrations` and under `Webhooks` click `Create Webhook`. 
