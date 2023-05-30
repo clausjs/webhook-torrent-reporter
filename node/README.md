@@ -87,8 +87,8 @@ Unfortunately, qBittorrent launches applications from the working directory wher
 
 ```
 @ECHO OFF
-cd <path_to_directory_where_exe_and_batch_file_are> //Example: cd C:\webhook-torrent-reporter\
-START webhook-torrent-reporter-win.exe %1 %2 %3 %4 // The %1-4 are very important and will pass the command line args from qbittorrent along to the webhook reporter
+cd <path_to_directory_where_exe_and_batch_file_are>
+START webhook-torrent-reporter-win.exe %1 %2 %3 %4
 ```
 
 Using qBittorrent as an example, we can configure the application to launch a program when a torrent completes downloading and pass along the required information via command line arguments. Download and extract the application to a folder where the running user will have access. Go into qBittorrent settings > Downloads > and enable `Run external program on torrent completion`. Inside the text box, point to the batch file and pass along the command line args: `<path_to_.bat_file> %G %N %Z %C`.
