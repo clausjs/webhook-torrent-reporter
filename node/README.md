@@ -16,7 +16,7 @@ WEBHOOK_URL=<url_to_post_webhook_message>
 **This is the only required key, the application will exit abrubtly if this is omitted**
 
 ## Optional environment variables
-Some optional enviornment variables that can be set in `.env` are as follows:
+Some optional enviornment variables that can be set in `config.ini` are as follows:
 
 | Setting | Default | Description |
 | ------- | ------- | ----------- |
