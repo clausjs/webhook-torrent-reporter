@@ -1,6 +1,6 @@
 {
   "name": "webhook-torrent-reporter",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "An app that can be triggered with command line arguments to post to a webhook and report that files have been downloaded",
   "main": "./dist/index.js",
   "scripts": {
