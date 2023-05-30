@@ -51,13 +51,13 @@ Add the appropriate key(s) to your `config.ini`:
 OMDB_KEY=<omdb_key>
 ```
 
-`MOVIES_TAG`: The torrent in question needs to be tagged with this tag for the application to pick it up and parse it as a movie. If this tag is ommitted, it won't matter if an OMDB_KEY is added, it will be ignored. **Both `OMDB_KEY` and `MOVIES_TAG` are required for movie lookups. If either is ommitted (or the torrent passed in is missing this tag, then the [default posting](###-default-posting) method will be used**
+`MOVIES_CATEGORY`: The torrent in question needs to be tagged with this tag for the application to pick it up and parse it as a movie. If this tag is ommitted, it won't matter if an OMDB_KEY is added, it will be ignored. **Both `OMDB_KEY` and `MOVIES_TAG` are required for movie lookups. If either is ommitted (or the torrent passed in is missing this tag, then the [default posting](###-default-posting) method will be used**
 
-`TV_TAG`: The torrent in question needs to be tagged with this tag for the application to pick it up and parse it as a tv show.
+`TV_CATEGORY`: The torrent in question needs to be tagged with this tag for the application to pick it up and parse it as a tv show.
 
 ```
-MOVIES_TAG=<tag_name_for_movie_files>
-TV_TAG=<tag_name_for_tv_files>
+MOVIES_CATEGORY=<category_name_for_movie_files>
+TV_CATEGORY=<category_name_for_tv_files>
 ```
 
 **If any of these keys are missing for any particular file type, the parsing will be skipped and the [default posting](###-default-posting) option will be used**
@@ -91,7 +91,7 @@ cd <path_to_directory_where_exe_and_batch_file_are>
 START webhook-torrent-reporter-win.exe %1 %2 %3 %4
 ```
 
-Using qBittorrent as an example, we can configure the application to launch a program when a torrent completes downloading and pass along the required information via command line arguments. Download and extract the application to a folder where the running user will have access. Go into qBittorrent settings > Downloads > and enable `Run external program on torrent completion`. Inside the text box, point to the batch file and pass along the command line args: `<path_to_.bat_file> %G %N %Z %C`.
+Using qBittorrent as an example, we can configure the application to launch a program when a torrent completes downloading and pass along the required information via command line arguments. Download and extract the application to a folder where the running user will have access. Go into qBittorrent settings > Downloads > and enable `Run external program on torrent completion`. Inside the text box, point to the batch file and pass along the command line args: `<path_to_.bat_file> %L %N %Z %C`.
 
 **NOTE: The arguments _are_ case sensitive and the order is very important. The directory where <path_to_.bat_file> is should also contain your `config.ini`.**
 

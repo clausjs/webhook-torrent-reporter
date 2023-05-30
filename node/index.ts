@@ -13,7 +13,7 @@ const GENERIC_PAYLOAD = Boolean(process.env.USE_GENERIC_PAYLOAD);
 
 interface ScriptParams {
     webhook_url?: string;
-    tags: string[];
+    category: string;
     file_name: string;
     file_size_bytes: number;
     number_of_files: number;
@@ -21,13 +21,13 @@ interface ScriptParams {
 
 const executeScript = async (params: ScriptParams) => {
 
-    const { webhook_url, tags, file_name, file_size_bytes, number_of_files } = params;
+    const { webhook_url, category, file_name, file_size_bytes, number_of_files } = params;
 
     if (!webhook_url) return;
 
-    const movies: string | undefined = process.env.MOVIES_TAG;
-    const tv: string | undefined = process.env.TV_TAG;
-    const music: string | undefined = process.env.MUSIC_TAG;
+    const movies: string | undefined = process.env.MOVIES_CATEGORY;
+    const tv: string | undefined = process.env.TV_CATEGORY;
+    const music: string | undefined = process.env.MUSIC_CATEGORY;
 
     const report: TorrentReport = {
         fileName: file_name,
@@ -37,15 +37,15 @@ const executeScript = async (params: ScriptParams) => {
 
     let postData: WebhookMessageCreateOptions | GenericWebhookPayload | undefined; 
 
-    if (movies && tags.includes(movies)) {
+    if (movies && category === movies) {
         logger.info(`Found movie tag with file: ${report.fileName}`);
         const reportBuilder = new MovieReportEmbedBuilder(CLIENT, GENERIC_PAYLOAD);
         postData = await reportBuilder.constructMovieReportWebhookPayload(report);
-    } else if (tv && tags.includes(tv)) {
+    } else if (tv && category === tv) {
         logger.info(`Found tv tag with file: ${report.fileName}`);
         const reportBuilder = new TVReportEmbedBuilder(CLIENT, GENERIC_PAYLOAD);
         postData = await reportBuilder.constructTVReportWebhookPayload(report);
-    } else if (music && tags.includes(music)) {
+    } else if (music && category === music) {
         // TODO: Need to find a way to parse music torrents
         // to search an api
     } else {
@@ -64,7 +64,7 @@ const executeScript = async (params: ScriptParams) => {
 const args = process.argv;
 const scriptParams: ScriptParams = {
     webhook_url: process.env.WEBHOOK_URL,
-    tags: args[2].split(","),
+    category: args[2],
     file_name: args[3] as string,
     file_size_bytes: Number(args[4]),
     number_of_files: Number(args[5])
@@ -74,7 +74,7 @@ if (!scriptParams.webhook_url) {
     logger.error("No webhook url provided. There is no action this script can perform", () => {
         process.exit(1);
     });
-} else if (!scriptParams.tags || !scriptParams.file_name || !scriptParams.file_size_bytes || !scriptParams.number_of_files) {
+} else if (!scriptParams.category || !scriptParams.file_name || !scriptParams.file_size_bytes || !scriptParams.number_of_files) {
     logger.error("Missing required command line arguments. There is no action this script can perform", () => {
         process.exit(1);
     });
