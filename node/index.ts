@@ -38,11 +38,11 @@ const executeScript = async (params: ScriptParams) => {
     let postData: WebhookMessageCreateOptions | GenericWebhookPayload | undefined; 
 
     if (movies && category === movies) {
-        logger.info(`Found movie tag with file: ${report.fileName}`);
+        logger.info(`Found movie category with file: ${report.fileName}`);
         const reportBuilder = new MovieReportEmbedBuilder(CLIENT, GENERIC_PAYLOAD);
         postData = await reportBuilder.constructMovieReportWebhookPayload(report);
     } else if (tv && category === tv) {
-        logger.info(`Found tv tag with file: ${report.fileName}`);
+        logger.info(`Found tv category with file: ${report.fileName}`);
         const reportBuilder = new TVReportEmbedBuilder(CLIENT, GENERIC_PAYLOAD);
         postData = await reportBuilder.constructTVReportWebhookPayload(report);
     } else if (music && category === music) {
@@ -64,10 +64,18 @@ const executeScript = async (params: ScriptParams) => {
 const args = process.argv;
 const scriptParams: ScriptParams = {
     webhook_url: process.env.WEBHOOK_URL,
-    category: args[2],
+    category: args[2] as string,
     file_name: args[3] as string,
     file_size_bytes: Number(args[4]),
     number_of_files: Number(args[5])
+}
+
+// Attempt to move every param back one element if category is missing
+// as we want to catch and report non-media torrents as well
+if (!scriptParams.number_of_files) {
+    scriptParams.file_name = args[2] as string;
+    scriptParams.file_size_bytes = Number(args[3]);
+    scriptParams.number_of_files = Number(args[4]);
 }
 
 if (!scriptParams.webhook_url) {

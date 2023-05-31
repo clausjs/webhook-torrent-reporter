@@ -70,7 +70,7 @@ class MovieReportEmbedBuilder extends WebhookReportEmbedBuilder {
     async constructMovieReportWebhookPayload(report: TorrentReport): Promise<WebhookMessageCreateOptions | GenericWebhookPayload> {
         if (!this.genericPayload) {
             const OMDB = new OMDBApi(process.env.OMDB_KEY);
-            const movieSearchRes: TitleSearchResponse = await OMDB.searchForMovieInformation(report.fileName);
+            const movieSearchRes: TitleSearchResponse = await OMDB.searchForMediaInformation(report.fileName);
             
             if (movieSearchRes.Response === 'True') {
                 const movie = movieSearchRes as OMDBMovieResult;

@@ -68,7 +68,7 @@ class TVReportEmbedBuilder extends WebhookReportEmbedBuilder {
             let result: TVMazeFullResult | undefined;
 
             
-            result = await TVDB.searchForTVShowInformation(report.fileName);
+            result = await TVDB.searchForMediaInformation(report.fileName);
 
             if (result) {
                 const messageContent: string = super.getMessageContent(report);
