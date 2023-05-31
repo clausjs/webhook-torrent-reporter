@@ -53,7 +53,7 @@ class TVReportEmbedBuilder extends WebhookReportEmbedBuilder {
             
         ]);
 
-        if (result.episode?.rating) {
+        if (result.episode?.rating && result.episode?.rating.average !== null) {
             fields.push({
                 name: 'Rating',
                 value: `${result.episode?.rating.average}/10`,
