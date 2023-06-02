@@ -13,7 +13,7 @@ const GENERIC_PAYLOAD = Boolean(process.env.USE_GENERIC_PAYLOAD);
 
 interface ScriptParams {
     webhook_url?: string;
-    category: string;
+    category?: string;
     file_name: string;
     file_size_bytes: number;
     number_of_files: number;
@@ -82,7 +82,7 @@ if (!scriptParams.webhook_url) {
     logger.error("No webhook url provided. There is no action this script can perform", () => {
         process.exit(1);
     });
-} else if (!scriptParams.category || !scriptParams.file_name || !scriptParams.file_size_bytes || !scriptParams.number_of_files) {
+} else if (!scriptParams.file_name || !scriptParams.file_size_bytes || !scriptParams.number_of_files) {
     logger.error("Missing required command line arguments. There is no action this script can perform", () => {
         process.exit(1);
     });
@@ -91,6 +91,7 @@ if (!scriptParams.webhook_url) {
         process.exit(0);
     });
 } else {
+    if (!scriptParams.category) logger.warn(`No category provided. File ${scriptParams.file_name} will be posted as a generic torrent`);
     executeScript(scriptParams);
 }
 

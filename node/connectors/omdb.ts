@@ -8,7 +8,7 @@ class OMDBApi extends MediaAPI {
 
     constructor(key?: string) {
         super(key);
-        if (this.isDev) this.data = require('./example-data/omdb_example.json');
+        if (this.isDev) this.data = require('./example-data/omdbapi_search_example.json');
     }
     async searchForMediaInformation(fileName: string): Promise<TitleSearchResponse> {
         if (this.data) {
