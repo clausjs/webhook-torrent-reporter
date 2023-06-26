@@ -53,7 +53,7 @@ class TVReportEmbedBuilder extends WebhookReportEmbedBuilder {
             
         ]);
 
-        if (result.episode?.rating) {
+        if (result.episode?.rating && result.episode?.rating.average !== null) {
             fields.push({
                 name: 'Rating',
                 value: `${result.episode?.rating.average}/10`,
@@ -68,7 +68,7 @@ class TVReportEmbedBuilder extends WebhookReportEmbedBuilder {
             let result: TVMazeFullResult | undefined;
 
             
-            result = await TVDB.searchForTVShowInformation(report.fileName);
+            result = await TVDB.searchForMediaInformation(report.fileName);
 
             if (result) {
                 const messageContent: string = super.getMessageContent(report);

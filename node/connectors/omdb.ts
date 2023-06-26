@@ -1,25 +1,19 @@
 import { get } from "../utils/fetch";
-import { parseFileName } from "../utils";
 import { TitleSearchResponse } from "../types";
 import logger from '../logger';
+import MediaAPI from "./MediaAPI";
 
-const DEV = process.env.NODE_ENV === "dev";
-let data: TitleSearchResponse | undefined;
-if (DEV) {
-    data = require("./example-data/omdbapi_search_example.json");
-}
-
-class OMDBApi {
-    key: string;
+class OMDBApi extends MediaAPI {
+    data: TitleSearchResponse | undefined;
 
     constructor(key?: string) {
-        this.key = key || "";
+        super(key);
+        if (this.isDev) this.data = require('./example-data/omdbapi_search_example.json');
     }
-    isDisabled(): boolean { return this.key === "" }
-    async searchForMovieInformation(fileName: string): Promise<TitleSearchResponse> {
-        if (data) {
+    async searchForMediaInformation(fileName: string): Promise<TitleSearchResponse> {
+        if (this.data) {
             logger.info("OMDb API returning example data");
-            return data;
+            return this.data;
         }
 
         const DEFAULT_RESPONSE: TitleSearchResponse = { Response: 'False', Error: 'No data' };
@@ -31,7 +25,7 @@ class OMDBApi {
         }
         
         try {
-            const cleanTitle: string = parseFileName(fileName).title;
+            const cleanTitle: string = this.parseFileName(fileName).title;
             logger.info(`Stripped movie title for torrent name: ${cleanTitle}`);
             const response: TitleSearchResponse = await get(`http://www.omdbapi.com/?apikey=${this.key}&t=${encodeURIComponent(cleanTitle)}`);
             return response;

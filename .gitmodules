@@ -1,0 +1,3 @@
+[submodule "node/parse-torrent-name"]
+	path = node/parse-torrent-name
+	url = git@github.com:clausjs/parse-torrent-name.git

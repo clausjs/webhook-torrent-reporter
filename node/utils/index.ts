@@ -1,4 +1,4 @@
-const ptn = require("parse-torrent-name");
+const ptn = require('../parse-torrent-name');
 
 import { TorrentParseResult } from "../types";
 
